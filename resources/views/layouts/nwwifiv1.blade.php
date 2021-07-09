@@ -194,7 +194,6 @@
 @elseif($show_menu)
 
     @include('layouts.menu')
-    1111
 
 @endif
 

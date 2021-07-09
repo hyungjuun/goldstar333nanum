@@ -197,6 +197,7 @@
 
 @endif
 
+
 <br />
 
 @yield('content')

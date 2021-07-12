@@ -67,7 +67,8 @@
 {{--    <link href="{{ asset('css/query-builder.default.min.css') }}" rel="stylesheet" type="text/css" />--}}
     <link href="{{ asset(LibreNMS\Config::get('stylesheet', 'css/styles.css')) }}?ver=20191124" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/' . LibreNMS\Config::get('applied_site_style', 'light') . '.css?ver=632417642') }}" rel="stylesheet" type="text/css" />
-{{--    hyungjuun --}}
+
+    {{-- hyungjuun nwadmin css add --}}
     <link href="{{ asset('css/nwadmin.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Theme style -->

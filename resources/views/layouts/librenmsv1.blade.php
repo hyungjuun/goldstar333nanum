@@ -46,6 +46,8 @@
     @foreach(LibreNMS\Config::get('webui.custom_css', []) as $custom_css)
         <link href="{{ $custom_css }}" rel="stylesheet" type="text/css" />
     @endforeach
+    {{-- hyungjuun nwadmin css add --}}
+    <link href="{{ asset('css/nwadmin.css') }}" rel="stylesheet" type="text/css" />
     @yield('css')
     @stack('styles')
 
@@ -105,6 +107,8 @@
 <br />
 
 @yield('content')
+
+@include('layouts.footer')
 
 @yield('scripts')
 

@@ -8,17 +8,6 @@
             @include('auth.login-form')
             <p><button type="button" class="btn btn-block btn-primary btn-lg" onclick="location.href='signup'">회원가입신청</button></p>
         </div>
-
-{{--        <br/>--}}
-{{--        <div class="col-md-6 col-md-offset-3">--}}
-{{--            <div class="panel panel-body ">--}}
-{{--            <hr/>--}}
-{{--            <p>회사명 (서비스 회사명) : 주관사 (주)골드스타 333 </p>--}}
-{{--            <p>주  소 : 강원도 화천군 사내면 수피령로 10번지</p>--}}
-{{--            <p>관리자명 : 김대준</p>--}}
-{{--            <p>전화번호/E-mail : </p>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </div>
 </div>
 @endsection

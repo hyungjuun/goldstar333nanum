@@ -48,6 +48,7 @@ class LayoutComposer
             /*** Title 설정 바꿈 hyungjuun  */
 //            $title .= ' | ' . Config::get('page_title_suffix');
             $title .= ' | ' . "나눔 Wifi ";
+
         } else {
             $title = Config::get('page_title_suffix');
         }

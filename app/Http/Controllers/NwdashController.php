@@ -1031,184 +1031,93 @@ class NwdashController extends Controller
         }
 
 
-        /*** 상점 상태 Y : 상점  | N : 비상점  */
-        if($request->input('ap_storetype') =="Y"){
-            $updateing = DB::table('TB_MBR')
-                ->where('STORE_ID', $request->input('store_id'))
-                ->update([
-                    'STORE_NAME'=>$request->input('store_name'),
-                    'BUSINESS_CODE'=>$request->input('ap_business'),
+        /*** 상점 상태 업데이트  */
+        $updateing = DB::table('TB_MBR')
+            ->where('STORE_ID', $request->input('store_id'))
+            ->update([
+                'STORE_NAME'=>$request->input('store_name'),
+                'BUSINESS_CODE'=>$request->input('ap_business'),
 
-                    // 업종코드
-                    'INDSTURY'=>$request->input('ap_industry'),
-                    // 업태
-                    'INS_TYPE'=>$request->input('ap_instype'),
+                // 업종코드
+                'INDSTURY'=>$request->input('ap_industry'),
+                // 업태
+                'INS_TYPE'=>$request->input('ap_instype'),
 
-                    // 대표자
-                    'CEO'=>$request->input('ap_ceo'),
-                    // 대표자 무선
-                    'CEO_MOBILE'=>$request->input('ap_ceomobile'),
-                    // 대표자 유선
-                    'CEO_TELNO'=>$request->input('ap_ceotelno'),
+                // 대표자
+                'CEO'=>$request->input('ap_ceo'),
+                // 대표자 무선
+                'CEO_MOBILE'=>$request->input('ap_ceomobile'),
+                // 대표자 유선
+                'CEO_TELNO'=>$request->input('ap_ceotelno'),
 
-                    // 담당자
-                    'MGR'=>$request->input('ap_mgr'),
-                    // 담당자 무선
-                    'MGR_MOBILE'=>$request->input('ap_mgrmobile'),
-                    // 담당자 유선
-                    'MGR_TELNO'=>$request->input('ap_mgrtelno'),
+                // 담당자
+                'MGR'=>$request->input('ap_mgr'),
+                // 담당자 무선
+                'MGR_MOBILE'=>$request->input('ap_mgrmobile'),
+                // 담당자 유선
+                'MGR_TELNO'=>$request->input('ap_mgrtelno'),
 
-                    // E-mail
-                    'USEREMAIL'=>$request->input('ap_email'),
+                // E-mail
+                'USEREMAIL'=>$request->input('ap_email'),
 
-                    // 주소
-                    'POSTCODE'=>$request->input('postcode'),
-                    'ADDRESS1'=>$request->input('addr'),
-                    'ADDRESS2'=>$request->input('addr1'),
+                // 주소
+                'POSTCODE'=>$request->input('postcode'),
+                'ADDRESS1'=>$request->input('addr'),
+                'ADDRESS2'=>$request->input('addr1'),
 
-                    // 상품권 선택
-                    'gift_card'=>$request->input('giftcheck'),
+                // 상품권 선택
+                'gift_card'=>$request->input('giftcheck'),
 
-                    // 메모
-                    'STORE_MEMO'=>$request->input('storememo'),
-                    // AP 메모
-                    'AP_MEMO'=>$request->input('apmemo'),
+                // 메모
+                'STORE_MEMO'=>$request->input('storememo'),
+                // AP 메모
+                'AP_MEMO'=>$request->input('apmemo'),
 
-                    // 상점 통신사
-                    'TELECOM'=>$request->input('aptelecomcheck'),
-                    'TELECOMOTHER'=>$request->input('ap_telecomother'),
+                // 상점 통신사
+                'TELECOM'=>$request->input('aptelecomcheck'),
+                'TELECOMOTHER'=>$request->input('ap_telecomother'),
 
-                    // 상점 가입상품
-                    'SUBSCRIPTION'=>$request->input('subscriptioncheck'),
+                // 상점 가입상품
+                'SUBSCRIPTION'=>$request->input('subscriptioncheck'),
 
-                    // POS
-                    'APPOS'=>$request->input('poscheck'),
+                // POS
+                'APPOS'=>$request->input('poscheck'),
 
-                    // 와이파이 유/무
-                    'STORE_WIFI'=>$wificheck,
+                // 와이파이 유/무
+                'STORE_WIFI'=>$wificheck,
 
-                    // 와이파이 유 / 소유 / 임대
-                    'STORE_WIFI_CHECK'=>$request->input('ap_wifi_state'),
+                // 와이파이 유 / 소유 / 임대
+                'STORE_WIFI_CHECK'=>$request->input('ap_wifi_state'),
 
-                    // 와이파이 ssid id
-                    'STORE_WIFI_ID'=>$request->input('ap_ssid_id'),
+                // 와이파이 ssid id
+                'STORE_WIFI_ID'=>$request->input('ap_ssid_id'),
 
-                    // 와이파이 ssid pw
-                    'STORE_WIFI_PW'=>$request->input('ap_ssid_pw'),
+                // 와이파이 ssid pw
+                'STORE_WIFI_PW'=>$request->input('ap_ssid_pw'),
 
-                    // 상점 통신요금
-                    'AP_COMM_FEE'=>$request->input('ap_comm_fee'),
+                // 상점 통신요금
+                'AP_COMM_FEE'=>$request->input('ap_comm_fee'),
 
-                    // 상점상태
-                    'CHECK'=>$request->input('apcheck'),
+                // 상점상태
+                'CHECK'=>$request->input('apcheck'),
 
-                    // 변경자
-                    'USERID'=>Auth::user()->user_id,
+                // 변경자
+                'USERID'=>Auth::user()->user_id,
 
-                    // 승인 / 미승인
-                    'APPROVAL'=>$request->input('ap_approval'),
+                // 승인 / 미승인
+                'APPROVAL'=>$request->input('ap_approval'),
 
-                    //변경일
-                    'UPD_DT'=>date("Y-m-d H:i:s")
-                ]);
-        }else{
-
-            /*** 비상점 가입 쿼리 */
-            $updateing = DB::table('TB_MBR')
-                ->where('STORE_ID', $request->input('store_id'))
-                ->update([
-
-                    // 비상점 스토어 네임 (가로등, 폴대, 나무, 돌(바위), 기타)
-                    "NONSTORENAME"=>$request->input('ap_nonstorename'),
-                    // 비상점 설치장소명
-                    "NONSTORELOC"=>$request->input('ap_nonstoreloc'),
-                    // 담당자
-                    'MGR'=>$request->input('ap_mgr'),
-                    // 담당자 무선
-                    'MGR_MOBILE'=>$request->input('ap_mgrmobile'),
-                    // 담당자 유선
-                    'MGR_TELNO'=>$request->input('ap_mgrtelno'),
-                    // E-mail
-                    'USEREMAIL'=>$request->input('ap_email'),
-                    // 주소
-                    'POSTCODE'=>$request->input('postcode'),
-                    'ADDRESS1'=>$request->input('addr'),
-                    'ADDRESS2'=>$request->input('addr1'),
-                    // 상품권 선택
-                    'gift_card'=>$request->input('giftcheck'),
-                    // 메모
-                    'STORE_MEMO'=>$request->input('storememo'),
-                    // 상점 통신사
-                    'TELECOM'=>$request->input('aptelecomcheck'),
-                    'TELECOMOTHER'=>$request->input('ap_telecomother'),
-                    // 상점 가입상품
-                    'SUBSCRIPTION'=>$request->input('subscriptioncheck'),
-                    // POS
-                    'APPOS'=>$request->input('poscheck'),
-                    // 와이파이 유/무
-                    'STORE_WIFI'=>$wificheck,
-                    // 와이파이 유 / 소유 / 임대
-                    'STORE_WIFI_CHECK'=>$request->input('ap_wifi_state'),
-                    // 와이파이 ssid id
-                    'STORE_WIFI_ID'=>$request->input('ap_ssid_id'),
-
-                    // 와이파이 ssid pw
-                    'STORE_WIFI_PW'=>$request->input('ap_ssid_pw'),
-
-                    // 상점 통신요금
-                    'AP_COMM_FEE'=>$request->input('ap_comm_fee'),
-
-                    // 상점상태
-                    'CHECK'=>$request->input('apcheck'),
-
-                    // 등록자
-                    'USERID'=>Auth::user()->user_id,
-
-                    // 승인 / 미승인
-                    'APPROVAL'=>$request->input('ap_approval'),
-
-                    //변경일
-                    'UPD_DT'=>date("Y-m-d H:i:s")
-                ]);
-
-
-            /*** 기존 연결된 등급 5 AP 기기에서 해당 스토어 자료 삭제  */
-            $tbapdelsearch = DB::table('TB_AP')->whereIn('STORE_ID', [(int)$request->input('store_id')])->get();
-            foreach ($tbapdelsearch as $tbapdelsearchs){
-//                echo $tbapdelsearchs->SEQ;
-
-                $up1query = DB::table('TB_AP')
-                    ->where('SEQ', $tbapdelsearchs->SEQ)
-                    ->update([
-                        "STORE_ID" => str_replace($request->input('store_id').'|', '',  $tbapdelsearchs->STORE_ID)
-                    ]);
-            }
-
-            /*** TB_AP STORE ID 리스트 추출 및 업데이트 */
-            $tbapsearch = DB::table('TB_AP')->where('SEQ', '=', $request->input('tbap_seq'))->first();
-            $tmp_storeid = $tbapsearch->STORE_ID;
-            if(strpos($tmp_storeid,$request->input('store_id')) === false) {
-                // 값이 존재 하지 않는다면
-                $storeid_list = $tmp_storeid.$request->input('store_id') . "|";
-
-                $tbapupdate = DB::table('TB_AP')
-                    ->where('SEQ', $request->input('tbap_seq'))
-                    ->update([
-                        "STORE_ID" => $storeid_list
-                    ]);
-            }
-        }
+                //변경일
+                'UPD_DT'=>date("Y-m-d H:i:s")
+            ]);
 
 
         /*** 고객 아이디 생성 */
-//        $new_userid = 'Nanum'.$request->input('store_id');
         $new_userid = $request->input('ap_business');
         $user_id_check = DB::table('users')
             ->select(DB::raw('count(*) as user_count'))
             ->where('username','=',$new_userid)
             ->first();
-
-//        echo $user_id_check->user_count;
 
         if( $user_id_check->user_count < 1 and  $request->input('ap_approval') == 1 ) {
             /*** 상점 승인, 등록이력이 없을 경우 (users) */

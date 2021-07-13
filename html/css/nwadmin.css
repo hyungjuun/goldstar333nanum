@@ -1,3 +1,6 @@
+.h1, h1 { font-size: 3.2rem; }
+
+
 .fa, .fas { font-weight: 900; }
 .content-header h1 { font-size: 1.8rem; margin: 0; font-weight: 500; }
 .card-primary.card-outline { border-top: 3px solid #007bff; }

@@ -1,0 +1,12 @@
+os: occamos
+text: Calix B6 System
+type: network
+icon: calix
+mib_dir: calix
+nobulk: true
+over:
+    - { graph: device_bits, text: 'Device Traffic' }
+discovery:
+    -
+        sysObjectID:
+            - .1.3.6.1.4.1.6066.1.

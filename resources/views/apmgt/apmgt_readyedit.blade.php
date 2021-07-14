@@ -139,8 +139,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                         @endforeach
@@ -196,8 +194,6 @@
                                             @endif
                                         </table>
                                     </div>
-
-
                                 </div>
                                 <hr/>
 
@@ -286,10 +282,7 @@
 @endsection
 
 @section('scripts')
-    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <script>
-
-
 
         function btn_memo_update() {
             if($("#memo_tag option:selected").val() == ''){
@@ -375,19 +368,6 @@
                 }
             );
 
-
-            {{--if({{$lists->ADM_STS}} == 2){--}}
-            {{--    $(".sts_stop").show();--}}
-            {{--}else{--}}
-            {{--    $(".sts_stop").hide();--}}
-            {{--}--}}
-
-            // var ipv4_address = $('#ap_ip');
-            // ipv4_address.inputmask({
-            //     alias: "ip",
-            //     greedy: false //The initial mask shown will be "" instead of "-____".
-            // });
-
             $.validator.setDefaults({
                 submitHandler: function () {
                     form.submit();
@@ -423,14 +403,6 @@
                 }
             });
 
-            // $("select[name=adm_sts]").change(function(){
-            //
-            //     if($(this).val() == 2){
-            //         $(".sts_stop").show();
-            //     }else{
-            //         $(".sts_stop").hide();
-            //     }
-            // });
         });
 
     </script>

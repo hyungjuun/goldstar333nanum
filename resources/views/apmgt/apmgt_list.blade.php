@@ -105,118 +105,11 @@
         </div>
     </section>
 
-    <!-- 등록/수정 폼 -->
-{{--    <div class="modal fade" id="modal-lg" style="display: none;" aria-hidden="true">--}}
-{{--        <div class="modal-dialog modal-lg">--}}
-{{--            <div class="modal-content">--}}
-{{--                <div class="modal-header">--}}
-{{--                    <h4 class="modal-title">AP정보수정</h4>--}}
-{{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                        <span aria-hidden="true">×</span>--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--                <form role="form" id="quickForm" method="post" action="nwapupdate" novalidate="novalidate">--}}
-{{--                    @csrf--}}
-{{--                    <input type="hidden" name="seq" value="10">--}}
-{{--                    <div class="modal-body">--}}
-{{--                        <div class="card-body">--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-sm-6">--}}
-{{--                                    <!-- text input -->--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>AP명</label>--}}
-{{--                                        <input type="text" name="ap_nm" class="form-control" placeholder="AP명">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-sm-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>AP CD</label>--}}
-{{--                                        <input type="text" name="ap_cd" class="form-control" placeholder="AP CD" readonly>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-sm-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>IP</label>--}}
-{{--                                        <input type="text" name="ap_ip" id="ap_ip" class="form-control" placeholder="xxx.xxx.xxx.xxx" >--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-sm-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>MODEL</label>--}}
-{{--                                        <input type="text" name="ap_model" class="form-control" placeholder="MODEL">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-sm-6">--}}
-{{--                                    <!-- text input -->--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>제조사</label>--}}
-{{--                                        <input type="text" name="ap_fac" class="form-control" placeholder="제조사">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-sm-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>Serial No</label>--}}
-{{--                                        <input type="text" name="ap_serial" class="form-control" placeholder="Serial No" style="text-transform: uppercase;" maxlength="13" >--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="row apsts">--}}
-{{--                                <div class="col-sm-6 ">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>AP 상태변경</label>--}}
-{{--                                        <select name="adm_sts" class="form-control">--}}
-{{--                                            <option value="">선택</option>--}}
-{{--                                            <option value="0">등록</option>--}}
-{{--                                            <option value="1">서비스</option>--}}
-{{--                                            <option value="2">중지</option>--}}
-{{--                                        </select>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-sm-6 sts_stop">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>중지사유</label>--}}
-{{--                                        <select name="ap_sts_reason" class="form-control">--}}
-{{--                                            <option value="">선택</option>--}}
-{{--                                            <option value="1">분실</option>--}}
-{{--                                            <option value="2">고장</option>--}}
-{{--                                            <option value="3">파손</option>--}}
-{{--                                            <option value="4">회수</option>--}}
-{{--                                            <option value="5">종료</option>--}}
-{{--                                        </select>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-sm-6">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>MAC</label>--}}
-{{--                                        <input type="text" name="ap_mac" class="form-control" placeholder="MAC">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-{{--                    <div class="modal-footer justify-content-between">--}}
-{{--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
-{{--                        <span>--}}
-{{--                            <button type="button" class="btn btn-danger delBtn" style=""><i class="far fa-trash-alt"></i> Del</button>--}}
-{{--                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
 
 @endsection
 
 @section('scripts')
-{{--    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>--}}
+
     <script src="{{ asset('js/jquery.inputmask.bundle.js') }}"></script>
     <script>
     $(document).ready(function() {
@@ -244,21 +137,6 @@
     };
 
     $(document).ready(function () {
-
-        var ipv4_address = $('#ap_ip');
-        ipv4_address.inputmask({
-            alias: "ip",
-            greedy: false //The initial mask shown will be "" instead of "-____".
-        });
-
-        <?php /*
-        $(".delBtn").click(function() {
-            if(confirm("정말 삭제하시겠습니까?")){
-                $('#quickForm')[0].action="/nwapmgtdel";
-                $('#quickForm')[0].submit();
-            }
-        });
- */ ?>
 
         $.validator.setDefaults({
             submitHandler: function () {

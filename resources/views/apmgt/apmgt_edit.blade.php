@@ -150,8 +150,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                         @endforeach
@@ -161,7 +159,7 @@
                                                 @if($lists->AP_STS == 4)
                                                 <button type="button" class="btn btn-success col fileinput-button dz-clickable" onclick="resetcheck()"><i class="fas fa-save"></i> 장비회수 확인(초기화)</button>
                                                 @endif
-                                                <button type="button" onclick="btn_update()" class="btn btn-primary"><i class="fas fa-save"></i> 수정</button>
+                                                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> 수정</button>
                                             </span>
                                         </div>
                                     </form>
@@ -169,99 +167,11 @@
                             </div>
                             <div id="example3_wrapper" class="dataTables_wrapper dt-bootstrap4">
 
-{{--                                <div class="row">--}}
-{{--                                    <div class="col-md-6">--}}
-{{--                                        <div class="card card-default">--}}
-{{--                                            <div class="card-header">--}}
-{{--                                                <h3 class="card-title">--}}
-{{--                                                    <i class="fas fa-exclamation-triangle"></i>--}}
-{{--                                                    Alerts--}}
-{{--                                                </h3>--}}
-{{--                                            </div>--}}
-{{--                                            <!-- /.card-header -->--}}
-{{--                                            <div class="card-body">--}}
-{{--                                                <div class="alert alert-danger alert-dismissible">--}}
-{{--                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>--}}
-{{--                                                    <h5><i class="icon fas fa-ban"></i> Alert!</h5>--}}
-{{--                                                    Danger alert preview. This alert is dismissable. A wonderful serenity has taken possession of my--}}
-{{--                                                    entire--}}
-{{--                                                    soul, like these sweet mornings of spring which I enjoy with my whole heart.--}}
-{{--                                                </div>--}}
-{{--                                                <div class="alert alert-info alert-dismissible">--}}
-{{--                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>--}}
-{{--                                                    <h5><i class="icon fas fa-info"></i> Alert!</h5>--}}
-{{--                                                    Info alert preview. This alert is dismissable.--}}
-{{--                                                </div>--}}
-{{--                                                <div class="alert alert-warning alert-dismissible">--}}
-{{--                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>--}}
-{{--                                                    <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>--}}
-{{--                                                    Warning alert preview. This alert is dismissable.--}}
-{{--                                                </div>--}}
-{{--                                                <div class="alert alert-success alert-dismissible">--}}
-{{--                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>--}}
-{{--                                                    <h5><i class="icon fas fa-check"></i> Alert!</h5>--}}
-{{--                                                    Success alert preview. This alert is dismissable.--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <!-- /.card-body -->--}}
-{{--                                        </div>--}}
-{{--                                        <!-- /.card -->--}}
-{{--                                    </div>--}}
-{{--                                    <!-- /.col -->--}}
-
-{{--                                    <div class="col-md-6">--}}
-{{--                                        --}}
-{{--                                        <div class="card card-default">--}}
-{{--                                            <div class="card-header">--}}
-{{--                                                <h3 class="card-title">--}}
-{{--                                                    <i class="fas fa-bullhorn"></i>--}}
-{{--                                                    Callouts--}}
-{{--                                                </h3>--}}
-{{--                                            </div>--}}
-{{--                                            <!-- /.card-header -->--}}
-{{--                                            <div class="card-body">--}}
-{{--                                                <div class="callout callout-danger">--}}
-{{--                                                    <h5>I am a danger callout!</h5>--}}
-
-{{--                                                    <p>There is a problem that we need to fix. A wonderful serenity has taken possession of my entire--}}
-{{--                                                        soul,--}}
-{{--                                                        like these sweet mornings of spring which I enjoy with my whole heart.</p>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="callout callout-info">--}}
-{{--                                                    <h5>I am an info callout!</h5>--}}
-
-{{--                                                    <p>Follow the steps to continue to payment.</p>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="callout callout-warning">--}}
-{{--                                                    <h5>I am a warning callout!</h5>--}}
-
-{{--                                                    <p>This is a yellow callout.</p>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="callout callout-success">--}}
-{{--                                                    <h5>I am a success callout!</h5>--}}
-
-{{--                                                    <p>This is a green callout.</p>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <!-- /.card-body -->--}}
-{{--                                        </div>--}}
-{{--                                        <!-- /.card -->--}}
-{{--                                    </div>--}}
-{{--                                    <!-- /.col -->--}}
-{{--                                </div>--}}
-
-
-
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <h4 class="card-title">AP 연동상점 정보</h4>
                                     </div>
                                     <div class="col-sm-12">
-
-
-
-
-
                                         <table id="example3" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="AP 연동 상점 리스트" style="width:100%;">
                                             @if(sizeof($storeinfo) < 1)
                                                 <tr><td style="text-align: center;">연동된 상점 리스트 내용이 없습니다. </td></tr>
@@ -445,7 +355,6 @@
 @endsection
 
 @section('scripts')
-    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <script>
 
         function btn_memo_update() {
@@ -462,11 +371,6 @@
 
             $('#memoform')[0].action="/newapapmemoup/all";
             $('#memoform')[0].submit();
-        }
-
-
-        function btn_update() {
-            $('#quickForm')[0].submit();
         }
 
 
@@ -517,14 +421,6 @@
                         $("#store_id").val("{{$now_store_id}}").prop("selected", true);
                     }
                 }
-
-
-
-
-                // if( $(this).val() == ""  &&  $('#ap_cd').val() != "" ){
-                //     alert("상점 미 선택시 AP CODE 는 초기화(대기 상태) 됩니다. ");
-                //     $('#ap_cd').val('');
-                // }
             });
 
             @if(sizeof($storeinfo) > 0)
@@ -572,19 +468,6 @@
             );
             @endif
 
-
-            {{--if({{$lists->ADM_STS}} == 2){--}}
-            {{--    $(".sts_stop").show();--}}
-            {{--}else{--}}
-            {{--    $(".sts_stop").hide();--}}
-            {{--}--}}
-
-            var ipv4_address = $('#ap_ip');
-            ipv4_address.inputmask({
-                alias: "ip",
-                greedy: false //The initial mask shown will be "" instead of "-____".
-            });
-
             $.validator.setDefaults({
                 submitHandler: function () {
                     form.submit();
@@ -595,17 +478,15 @@
                 rules: {
                     ap_nm: { required: true },
                     ap_serial: { required: true },
-                    addr: { required: true },
                     ap_model: { required: true },
                     ap_fac: { required: true }
                 },
                 messages: {
 
-                    store_id: "Please enter a shop Name",
-                    addr: "Please enter a address",
-                    ap_ip: "Please enter a ip",
-                    ap_model: "Please enter a model",
-                    ap_mac: "Please enter a mac"
+                    ap_nm: "AP 이름을 입력해 주세요",
+                    ap_serial: "제품 시리얼 정보를 입력해 주세요",
+                    ap_model: "제품 모델정보를 입력해 주세요",
+                    ap_fac: "제조사 정보를 입력해 주세요"
                 },
                 errorElement: 'span',
                 errorPlacement: function (error, element) {
@@ -617,6 +498,9 @@
                 },
                 unhighlight: function (element, errorClass, validClass) {
                     $(element).removeClass('is-invalid');
+                },
+                submitHandler:function(){
+                    $('#quickForm')[0].submit();
                 }
             });
 

@@ -215,7 +215,6 @@
 @endsection
 
 @section('scripts')
-    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <script>
         $(document).ready(function() {
             $('#example1').DataTable(
@@ -242,21 +241,6 @@
         };
 
         $(document).ready(function () {
-
-            var ipv4_address = $('#ap_ip');
-            ipv4_address.inputmask({
-                alias: "ip",
-                greedy: false //The initial mask shown will be "" instead of "-____".
-            });
-
-            <?php /*
-        $(".delBtn").click(function() {
-            if(confirm("정말 삭제하시겠습니까?")){
-                $('#quickForm')[0].action="/nwapmgtdel";
-                $('#quickForm')[0].submit();
-            }
-        });
- */ ?>
 
             $.validator.setDefaults({
                 submitHandler: function () {

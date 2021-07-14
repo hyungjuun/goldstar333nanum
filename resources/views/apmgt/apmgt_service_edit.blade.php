@@ -286,10 +286,7 @@
 @endsection
 
 @section('scripts')
-    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <script>
-
-
 
         function btn_memo_update() {
             if($("#memo_tag option:selected").val() == ''){
@@ -360,14 +357,6 @@
                         $("#store_id").val("{{$now_store_id}}").prop("selected", true);
                     }
                 }
-
-
-
-
-                // if( $(this).val() == ""  &&  $('#ap_cd').val() != "" ){
-                //     alert("상점 미 선택시 AP CODE 는 초기화(대기 상태) 됩니다. ");
-                //     $('#ap_cd').val('');
-                // }
             });
 
             $('#example2').DataTable(
@@ -396,18 +385,6 @@
                 }
             );
 
-
-            {{--if({{$lists->ADM_STS}} == 2){--}}
-            {{--    $(".sts_stop").show();--}}
-            {{--}else{--}}
-            {{--    $(".sts_stop").hide();--}}
-            {{--}--}}
-
-            var ipv4_address = $('#ap_ip');
-            ipv4_address.inputmask({
-                alias: "ip",
-                greedy: false //The initial mask shown will be "" instead of "-____".
-            });
 
             $.validator.setDefaults({
                 submitHandler: function () {
@@ -443,15 +420,6 @@
                     $(element).removeClass('is-invalid');
                 }
             });
-
-            // $("select[name=adm_sts]").change(function(){
-            //
-            //     if($(this).val() == 2){
-            //         $(".sts_stop").show();
-            //     }else{
-            //         $(".sts_stop").hide();
-            //     }
-            // });
         });
 
     </script>

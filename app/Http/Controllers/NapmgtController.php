@@ -13,7 +13,6 @@ class NapmgtController extends Controller
     /*** AP 장비 전체 리스트 */
     function newapmgtlist()
     {
-
         $data = array(
             'list' => DB::table('TB_AP')
                 ->select('TB_AP.SEQ', 'TB_AP.AP_NM', 'TB_AP.AP_MAC', 'TB_AP.SERIAL_NO', 'TB_AP.AP_CD', 'TB_AP.AP_IP', 'TB_AP.AP_STS', 'TB_AP.ADM_STS', 'TB_AP.AP_STS_REASON', 'TB_AP.REG_DT', 'TB_AP.UPD_ID', 'TB_AP.AP_MODEL', 'TB_AP.AP_MAC', 'TB_AP.STORE_ID', 'TB_AP.AP_FAC', 'TB_MBR.STORE_NAME', 'TB_MBR.POSTCODE',  'TB_MBR.ADDRESS1', 'TB_MBR.ADDRESS2', 'TB_AP.WORKER1' )
@@ -283,7 +282,6 @@ class NapmgtController extends Controller
         }
 
 
-
         if($memoquery){
             return redirect($urlparam)->with('success','데이터가 성공적으로 업데이트 되었습니다.');
         }else{
@@ -340,8 +338,6 @@ class NapmgtController extends Controller
     }
 
 
-
-
     /*** New AP 장비등록 ALL 리스트 */
     function newapmgtreadylist(){
 
@@ -369,10 +365,6 @@ class NapmgtController extends Controller
         $data = array(
             'list' => DB::table('TB_AP')->where('SEQ','=', $id)->get(),
             'storeinfo' => DB::table('TB_MBR')->where('STORE_ID','=', $storyquery[0]->STORE_ID)->get(),
-//            'storeid' => DB::table('TB_MBR')
-//                ->select('STORE_ID', 'STORE_NAME')
-//                ->whereIn('CHECK', [1, 2, 3])
-//                ->get(),
             'apmemolist' => DB::table('TB_MEMO')
                 ->where('PK', '=', $id)
                 ->orderBy('REGDATE', 'desc')
@@ -449,10 +441,6 @@ class NapmgtController extends Controller
         $data = array(
             'list' => DB::table('TB_AP')->where('SEQ','=', $id)->get(),
             'storeinfo' => DB::table('TB_MBR')->where('STORE_ID','=', $storyquery[0]->STORE_ID)->get(),
-//            'storeid' => DB::table('TB_MBR')
-//                ->select('STORE_ID', 'STORE_NAME')
-//                ->whereIn('CHECK', [1, 2, 3])
-//                ->get(),
             'apmemolist' => DB::table('TB_MEMO')
                 ->where('PK', '=', $id)
                 ->orderBy('REGDATE', 'desc')
@@ -499,9 +487,5 @@ class NapmgtController extends Controller
             return redirect('newapmgtservicelist')->with('fail','등록관련 문제가 있습니다. 관리자에게 문의 하시기 바랍니다.');
         }
     }
-
-
-
-
 
 }

@@ -39,7 +39,7 @@
                                         </div>
                                     @endif
 
-                                    <form role="form" id="quickForm" method="post" action="newapmgtupdate" novalidate="novalidate">
+                                    <form role="form" id="quickForm" method="post" action="newapmgtserviceupdate" novalidate="novalidate">
                                         @csrf
                                         @foreach($list as $lists)
                                             <?php $apseq = $lists->SEQ; ?>

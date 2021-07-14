@@ -148,7 +148,6 @@
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <span>
-{{--                            <button type="button" class="btn btn-danger delBtn" style=""><i class="far fa-trash-alt"></i> Del</button>--}}
                             <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
                         </span>
                     </div>
@@ -165,9 +164,6 @@
         var addForm = function(){
             $('#quickForm')[0].reset();
             $(".modal-title").text("상품권 등록");
-            <?php /*
-            $(".delBtn").hide();
-            */?>
             $('#quickForm')[0].action="/nwgiftadd";
         };
 
@@ -186,14 +182,6 @@
                 }
             );
 
-<?php /*
-            $(".delBtn").click(function() {
-                if(confirm("정말 삭제하시겠습니까?")){
-                    $('#quickForm')[0].action="/nwgiftdel";
-                    $('#quickForm')[0].submit();
-                }
-            });
-*/ ?>
             $.validator.setDefaults({
                 submitHandler: function () {
                     form.submit();
@@ -227,9 +215,6 @@
         var setModify = function(seq,local,name1,name2,name3,actflag){
             $('#quickForm')[0].reset();
             $(".modal-title").text("상품권 수정");
-<?php /*
-            $(".delBtn").show();
- */ ?>
             $('#quickForm')[0].action="/nwgiftupdate";
             $( "input[name*='seq']" ).val(seq);
             $( "input[name*='gift_local']" ).val(local);

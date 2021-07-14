@@ -123,21 +123,19 @@ Route::post('ajaxsearch', [NwmemberController::class, 'ajaxsearch']);
          * Nanum wifi add menu list
          */
 
+        /*** 서비스 현황 Dashboard */
+        Route::get('nwdashboard', [NwdashController::class, 'index']);
+
         /*** Gift 상품권 */
         Route::get('nwgiftlist', [NwgiftController::class, 'index']);
         Route::post('nwgiftadd', [NwgiftController::class, 'nwgiftadd']);
         Route::post('nwgiftupdate', [NwgiftController::class, 'nwgiftupdate']);
         Route::post('nwgiftdel', [NwgiftController::class, 'nwgiftdel']);
 
-        /*** 서비스 현황 Dashboard */
-        Route::get('nwdashboard', [NwdashController::class, 'index']);
-
-        /*** 고객정보관리 리스트 */
+        /*** 고객정보관리 */
         Route::get('nwuserlist', [NwdashController::class, 'userlist']);
-
-        /*** 고객정보 업데이트 */
+        /*** 고객정보관리 업데이트 */
         Route::post('nwuserupdate', [NwdashController::class, 'userupdate']);
-
 
         /*** New AP 장비관리 ALL 리스트 */
         Route::get('newapmgtlist', [NapmgtController::class, 'newapmgtlist']);
@@ -155,7 +153,6 @@ Route::post('ajaxsearch', [NwmemberController::class, 'ajaxsearch']);
         /*** New AP MEMO Insert */
         Route::post('newapapmemoup/{type}', [NapmgtController::class, 'newapapmemoup']);
 
-
         /*** New AP 장비 등록 ALL 리스트 */
         Route::get('newapmgtreadylist', [NapmgtController::class, 'newapmgtreadylist']);
         /*** New AP 장비 등록 수정 페이지 */
@@ -170,62 +167,18 @@ Route::post('ajaxsearch', [NwmemberController::class, 'ajaxsearch']);
         /*** New AP 장비 서비스 수정 업데이트 */
         Route::post('newapmgtserviceupdate', [NapmgtController::class, 'newapmgtserviceupdate']);
 
-
-        /*** 장비관리 리스트 */
-        Route::get('nwapmgtlist', [MgtlistController::class, 'apmgtlist']);
-        Route::get('nwapmgtedit/{id}', [MgtlistController::class, 'apmgtedit']);
-        Route::post('nwapmgtadd', [MgtlistController::class, 'apmgtadd']);
-        Route::post('nwapmgtupdate', [MgtlistController::class, 'apmgtupdate']);
-        Route::post('nwapmgtdel', [MgtlistController::class, 'apmgtdel']);
-
         /*** 장비관리 이력조회 리스트 */
         Route::get('nwaphistorylist', [MgtlistController::class, 'aphistorylist']);
         Route::post('nwaphistorylist', [MgtlistController::class, 'aphistorylist']);
-//        Route::match(['get', 'post'], 'nwaphistorylist', [MgtlistController::class, 'aphistorylist']);
-
-        /*** AP 코드관리 */
-        Route::get('nwaplist', [NwdashController::class, 'aplist']);
-        Route::post('nwapadd', [NwdashController::class, 'apadd']);
-        Route::post('nwapupdate', [NwdashController::class, 'apupdate']);
-        Route::post('nwapdel', [NwdashController::class, 'apdel']);
-
-//    Route::get('nwapmap', [NwdashController::class, 'apmap']);
-
-        Route::get('nwstoreaplist', [NwdashController::class, 'storeaplist']);
-        Route::post('nwstoreapadd', [NwdashController::class, 'storeapadd']);
-        Route::post('nwstoreapupdate', [NwdashController::class, 'storeapupdate']);
-        Route::post('nwstoreapdel', [NwdashController::class, 'storeapdel']);
-
-
-
 
         /*** AP 설치 상점관리 */
         Route::get('nwpromlist', [NwdashController::class, 'promlist']);
-
-        /*** 신규가입 상점 */
-            Route::get('nwpromnew', [NwdashController::class, 'promnew']);
-
-        /*** 신규가입 비상점 가입 페이지  */
-        Route::get('nwpromnewnon', [NwdashController::class, 'promnewnon']);
-
+        /*** AP 설치 상점관리 신규등록 */
+        Route::get('nwpromnew', [NwdashController::class, 'promnew']);
         /*** AP 설치 상점관리 - 상점 수정 */
         Route::get('nwpromedit/{id}', [NwdashController::class, 'promedit']);
-
-        /*** AP 설치 상점관리 - 비상점 수정 */
-        Route::get('nwpromeditnon/{id}', [NwdashController::class, 'promeditnon']);
-
         /*** AP 설치 상점관리 서치 */
         Route::post('nwpromserchlist', [NwdashController::class, 'promserchlist']);
-
-        Route::post('nwpromadd', [NwdashController::class, 'promadd']);
-        Route::post('nwpromupdate', [NwdashController::class, 'promupdate']);
-
-        /*** AP 상점관리 (상점, 비상점) 삭제 */
-        Route::post('nwpromdel', [NwdashController::class, 'promdel']);
-
-
-        /*** 이전 메뉴 관리 삭제 예정 */
-        Route::get('nwemplist', [NwdashController::class, 'emplist']);
 
         /*** 메뉴 관리 */
         Route::get('nwmenumgt', [NwmenumgtController::class, 'index']);

@@ -45,7 +45,6 @@
                                         <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info" style="width: 100%;">
                                             <thead>
                                             <tr role="row">
-{{--                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 60px;"  aria-label="상점구분: activate to sort column ascending">상점구분</th>--}}
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 110px;" aria-sort="descending" aria-label="상점서비스 상태: activate to sort column ascending">상점서비스 상태</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 100px;" aria-label="상점명: activate to sort column ascending">상점명</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 100px;" aria-label="사업자번호: activate to sort column ascending">사업자번호</th>
@@ -73,7 +72,6 @@
                                                     ?>
                                                 @else
                                                     <?php
-//                                                    $click_url = "/nwpromeditnon/".$lists->STORE_ID;
                                                     $click_url = "/nwpromedit/".$lists->STORE_ID;
                                                     ?>
                                                 @endif
@@ -83,13 +81,6 @@
                                             @endif
 
                                             >
-{{--                                                <td role="row" class="odd" onclick="location.href='{{ $click_url }}'" role="row" class="odd" >--}}
-{{--                                                    @if($lists->STORETYPE == "Y")--}}
-{{--                                                        상점--}}
-{{--                                                    @else--}}
-{{--                                                        비상점--}}
-{{--                                                    @endif--}}
-{{--                                                </td>--}}
                                                 <td role="row" class="odd" onclick="location.href='{{ $click_url }}'">
                                                     @switch($lists->CHECK)
                                                         @case(0)
@@ -164,10 +155,6 @@
                                                         @foreach(@unserialize($lists->ATTACH_FILE) as $key => $filenames)
 
                                                             <li class="col-sm-4">
-{{--                                                            <a href="/{{$filenames}}" data-toggle="lightbox" data-title="등록전단지 {{$filenames}}" data-gallery="gallery" >--}}
-{{--                                                                <img src="/{{$filenames}}" class="img-fluid mb-2" alt="red sample" width="100px;"/>--}}
-{{--                                                            </a>--}}
-
                                                                 <a href="/{{$filenames}}" data-toggle="lightbox" data-title="등록전단지 {{$filenames}}" data-gallery="gallery" >
                                                                     @if($key == 0 && !empty($thumbnailarr[0]))
                                                                         <img src="/{{$thumbnailarr[0]}}" class="img-fluid mb-2" alt="red sample" width="100px;"/>
@@ -212,7 +199,6 @@
                                             </tbody>
                                             <tfoot>
                                             <tr>
-{{--                                                <th rowspan="1" colspan="1">상점구분</th>--}}
                                                 <th rowspan="1" colspan="1">상점서비스 상태</th>
                                                 <th rowspan="1" colspan="1">상점명</th>
                                                 <th rowspan="1" colspan="1">사업자번호</th>
@@ -236,7 +222,7 @@
         </div>
     </section>
 
-    <!-- 등록/수정 폼 -->
+
     <div class="modal fade" id="modal-lg">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -555,113 +541,6 @@
 @section('scripts')
     <script>
 
-        {{--
-        function setModify(store_id,store_name,businesscode,indstury,instype,ceo,ceomobile,ceotelno,mgr,mgrmobile,mgrtelno,postcode,address1,address2,giftcard,apmemo,telecom,telecomother,subscription,appos,storewifi,storewificheck,wifiid,wifipw,apfee,attach_file,apcheck){
-
-                    $('form').each(function() {
-                        this.reset();
-                    });
-
-                    $('#modal-lg').modal("show");
-
-                    <?php /*** checkbos gift 전체 선택 해제  */ ?>
-                    $(":checkbox").attr("checked", false);
-                    var arrDay = giftcard.split(',');
-                    for (var nArrCnt in arrDay) {
-                        $("input[name=giftname][value='"+arrDay[nArrCnt]+"']").attr("checked",true);
-                    }
-
-                    <?php /*** checkbos 통신사 전체 선택 해제  */ ?>
-                    var arrtelecom = telecom.split(',');
-                    for (var nArrCnt in arrtelecom) {
-                        $("input[name=ap_telecom][value='"+arrtelecom[nArrCnt]+"']").attr("checked",true);
-                    }
-
-                    <?php /*** checkbos 가입상품 전체 선택 해제  */ ?>
-                    var arrsubscription = subscription.split(',');
-                    for (var nArrCnt in arrsubscription) {
-                        $("input[name=ap_subscription][value='"+arrsubscription[nArrCnt]+"']").attr("checked",true);
-                    }
-
-                    <?php /*** checkbos POS 전체 선택 해제  */ ?>
-                    var arrappos = appos.split(',');
-                    for (var nArrCnt in arrappos) {
-                        $("input[name=ap_pos][value='"+arrappos[nArrCnt]+"']").attr("checked",true);
-                    }
-
-                    // $('#quickForm')[0].reset();
-                    $(".modal-title").text("상점정보수정");
-                    $(".delBtn").show();
-                    $('#quickForm')[0].action="/nwpromupdate";
-
-                    $( "input[name*='store_id']" ).val(store_id);
-                    $( "input[name*='store_name']" ).val(store_name);
-                    $( "input[name*='ap_business']" ).val(businesscode);
-                    $( "input[name*='ap_industry']" ).val(indstury);
-                    $( "input[name*='ap_instype']" ).val(instype);
-                    $( "input[name*='ap_ceo']" ).val(ceo);
-                    $( "input[name*='ap_ceomobile']" ).val(ceomobile);
-                    $( "input[name*='ap_ceotelno']" ).val(ceotelno);
-                    $( "input[name*='ap_mgr']" ).val(mgr);
-                    $( "input[name*='ap_mgrmobile']" ).val(mgrmobile);
-                    $( "input[name*='ap_mgrtelno']" ).val(mgrtelno);
-                    $( "input[name*='postcode']" ).val(postcode);
-                    $( "input[name*='addr']" ).val(address1);
-                    $( "input[name*='addr1']" ).val(address2);
-                    $("#storememo").val(apmemo);
-                    $( "input[name*='ap_telecomother']" ).val(telecomother);
-
-                    if(storewifi == "Y"){
-                        $("input[name=ap_wifi_y][value='Y']").attr("checked",true);
-                        $("input[name=ap_wifi_n][value='N']").attr("checked",false);
-                    }
-                    if(storewifi == "N"){
-                        $("input[name=ap_wifi_y][value='Y']").attr("checked",false);
-                        $("input[name=ap_wifi_n][value='N']").attr("checked",true);
-                    }
-
-                    $("input:radio[name='ap_wifi_state']").removeAttr("checked");
-                    $("input:radio[name='ap_wifi_state']:radio[value='"+storewificheck+"']").prop("checked",true);
-
-                    $( "input[name*='ap_ssid_id']" ).val(wifiid);
-                    $( "input[name*='ap_ssid_pw']" ).val(wifipw);
-
-                    <?php /*** checkbos 통신요금   */ ?>
-                    var arrapfee = apfee.split(',');
-                    for (var nArrCnt in arrapfee) {
-                        $("input[name=ap_comm_fee][value='"+arrapfee[nArrCnt]+"']").attr("checked",true);
-                    }
-
-                    $("#apcheck").val(apcheck).prop("selected", true);
-
-
-                    <?php /*** 첨부파일   */ ?>
-                    $( "input[name*='attach_file']" ).val(attach_file);
-
-                    const arr = attach_file.split("|");
-                    console.log("arr value => "+arr);
-
-                    if(arr[0] != "" ){
-                        $("#imgfile1").attr("src", arr[0]);
-                    }else{
-                        $("#imgfile1").attr("src", "/default.jpg");
-                    }
-                    if(arr[1] != "" ){
-                        $("#imgfile2").attr("src", arr[1]);
-                    }else{
-                        $("#imgfile2").attr("src", "/default.jpg");
-                    }
-                    if(arr[2] != "" ){
-                        $("#imgfile3").attr("src", arr[2]);
-                    }else{
-                        $("#imgfile3").attr("src", "/default.jpg");
-                    }
-
-                    sendclick();
-                }
-                --}}
-
-
         function svcsearch(){
 
             if( $("#svcser option:selected").val() ){
@@ -807,7 +686,7 @@
             $('#poscheck').val(appos);
             console.log(appos);
 
-            // $('#quickForm')[0].submit();
+            {{-- $('#quickForm')[0].submit(); --}}
         }
 
         function maxLengthCheck(object){

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-//use phpseclib3\Crypt\DSA\Formats\Keys\Raw;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,7 +24,7 @@ class NwdashController extends Controller
 
             if($first_menu_name[1] == "서비스 현황"){ return redirect('/nwdashboard');  }
             if($first_menu_name[1] == "고객정보관리"){ return redirect('/nwuserlist');   }
-//            if($first_menu_name[1] == "장비등록현황"){ return redirect('/nwapmgtlist');  }
+            if($first_menu_name[1] == "장비등록현황"){ return redirect('/nwapmgtlist');  }
 
             if($first_menu_name[1] == "전체리스트"){  return redirect('/newapmgtlist'); }
             if($first_menu_name[1] == "등록리스트"){  return redirect('/newapmgtreadylist'); }
@@ -62,7 +61,6 @@ class NwdashController extends Controller
 
             'nowconn' => DB::table('TB_AP_VISIT')
                 ->whereRaw('DATE_FORMAT(UPD_DT, "%Y-%m-%d") = CURDATE()')
-//                ->where('REG_DT', '>=', 'DATE_ADD(NOW(), INTERVAL -1 HOUR)')
                 ->select(DB::raw('count(*) as nowconn_tot'))
                 ->get(),
 
@@ -74,7 +72,7 @@ class NwdashController extends Controller
             'totaluser' => DB::table('TB_USER')
                 ->select(DB::raw('count(*) as totaluser_tot'))
                 ->get(),
-            // 플랫폼 지표
+
             /*** 가맹점 수
              * TB_MBR CHECK > 0 이상
              */
@@ -92,31 +90,19 @@ class NwdashController extends Controller
              * 네트워크 상태 기준 | AP_STS = 네트워크 서비스 상태(등록:0 / 상점 매칭(서비스 개시) :1 / 서비스 중지:2 )
              */
             'useapcnt' => DB::table('TB_AP')->whereIn('AP_STS', [1])->select(DB::raw('count(*) as useapcnt_tot'))->get(),
-//            'normalcnt' => DB::table('TB_AP')->whereIn('AP_STS', [0])->select(DB::raw('count(*) as normalcnt_tot'))->get(),
 
             /*** 장애 AP
              * 네트워크 상태 기준 | AP_STS = 네트워크 서비스 상태(등록:0 / 상점 매칭(서비스 개시) :1 / 서비스 중지:2 )
              */
             'failapcnt' => DB::table('TB_AP')->whereIn('AP_STS', [2])->select(DB::raw('count(*) as failapcnt_tot'))->get(),
-//            'ninstallcnt' => DB::table('TB_AP')->whereIn('AP_STS', [0])->select(DB::raw('count(*) as ninstallcnt_tot'))->get(),
 
             /*** 전체 AP | 서비스 + 중지 기준
              * 네트워크 상태 기준 | AP_STS = 네트워크 서비스 상태(등록:0 / 상점 매칭(서비스 개시) :1 / 서비스 중지:2 )
              */
             'aptotalcnt' => DB::table('TB_AP')->whereIn('AP_STS', [1,2])->select(DB::raw('count(*) as aptotalcnt_tot'))->get(),
 
-            /*** 상위 상점정보
-            'storeinfo' => DB::table('TB_STORE')
-                ->select(DB::raw(' STORE_NAME, (SELECT COUNT(*) FROM TB_AP_VISIT WHERE TB_STORE.AP_CD = TB_AP_VISIT.AP_CD) AS total, (SELECT COUNT(*) FROM TB_AP_VISIT WHERE TB_STORE.AP_CD = TB_AP_VISIT.AP_CD AND DATE_FORMAT(REG_DT, "%Y-%m-%d") = CURDATE()) AS today ' ))
-                ->where('STEP', '!=', '0')
-                ->orderBy('total', 'desc')
-                ->limit(6)
-                ->get(),
-             * */
-
             /*** 상위 상점정보 */
             'storeinfo' => DB::table('TB_MBR')
-//                ->select(DB::raw(' STORE_NAME, (SELECT COUNT(*) FROM TB_AP_VISIT WHERE TB_MBR.AP_CD = TB_AP_VISIT.AP_CD) AS total, (SELECT COUNT(*) FROM TB_AP_VISIT WHERE TB_MBR.AP_CD = TB_AP_VISIT.AP_CD AND DATE_FORMAT(REG_DT, "%Y-%m-%d") = CURDATE()) AS today ' ))
                 ->select(DB::raw('
                 STORE_NAME,
                 (SELECT COUNT(*) FROM TB_AP_VISIT WHERE TB_MBR.STORE_ID = TB_AP_VISIT.AP_CD AND date(TB_AP_VISIT.REG_DT) = date(subdate(now(), INTERVAL 1 DAY))) AS oneday,
@@ -436,9 +422,10 @@ class NwdashController extends Controller
 
         /*** 상점 관리 */
         $mar_query = DB::table('TB_MBR');
-        if(Auth::user()->level == 9){
-            $mar_query = $mar_query->where('STORE_ID', '=', Auth::user()->storekey);
-        }
+        // hyungjuun 일부 변경함.
+//        if(Auth::user()->level == 9){
+//            $mar_query = $mar_query->where('STORE_ID', '=', Auth::user()->storekey);
+//        }
         $mar_query = $mar_query->get();
 
         $data = array(

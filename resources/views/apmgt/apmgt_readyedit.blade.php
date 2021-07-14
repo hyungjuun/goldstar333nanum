@@ -302,6 +302,13 @@
 
 
         function btn_update() {
+
+            if($("select[name=adm_sts]").val() == "1"){
+                if($('#ap_ip').val() == ''){
+                    alert('IP 정보를 입력해 주세요 ');
+                    return false;
+                }
+            }
             $('#quickForm')[0].submit();
         }
 

@@ -104,9 +104,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">신규메뉴등록</h4>
-{{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                        <span aria-hidden="true">×</span>--}}
-{{--                    </button>--}}
                 </div>
                 <form role="form" id="quickForm" method="post" action="/nwmenumgtadd" novalidate="novalidate">
                     @csrf
@@ -166,24 +163,11 @@
                                         <input class="form-check-input" type="checkbox" name="m3s3" id="menucheck" value="m3s3_서비스리스트" >
                                         <label class="form-check-label">서비스리스트</label>
                                     </div>
-
-{{--                                    <div class="form-check">--}}
-{{--                                        <input class="form-check-input" type="checkbox" name="m3s1" id="menucheck" value="m3s1_장비등록현황" >--}}
-{{--                                        <label class="form-check-label">장비등록현황</label>--}}
-{{--                                    </div>--}}
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="m3s4" id="menucheck" value="m3s2_이력현황" >
                                         <label class="form-check-label">이력현황</label>
                                     </div>
                                 </div>
-
-{{--                                <div class="col-sm-2">--}}
-{{--                                    <div class="form-check">--}}
-{{--                                        <input class="form-check-input" type="checkbox" name="m4" id="menucheck" value="m4_AP코드관리"  >--}}
-{{--                                        <label class="form-check-label">AP코드관리</label>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-                                
                                 <div class="col-sm-2">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="m5" id="menucheck" value="m5_AP설치상점관리" >

@@ -485,30 +485,6 @@ class NwdashController extends Controller
         return view('nwdashboard.promedit', $data);
     }
 
-    /** AP 비상점 수정 페이지  */
-    function promeditnon(Request $request, $id){
-
-        $tbap_seq = DB::table('TB_AP')->whereIn('STORE_ID', [(int)$id])->get();
-
-        if(sizeof($tbap_seq) > 0){
-            foreach ($tbap_seq as $tbap_seqs){
-                $tbap_seq = $tbap_seqs->SEQ;
-            }
-        }else{
-            $tbap_seq = 0;
-        }
-
-        $data = array(
-            'list' => DB::table('TB_MBR')->where('STORE_ID','=', $id)->get(),
-            'giftlist' => DB::table('tb_gift')->get(),
-            'sid' => $id,
-            'aplist' => DB::table('TB_AP')->where('AP_CD', '<>', '')->get(),
-            'apseq' => $tbap_seq
-        );
-
-        return view('nwdashboard.promeditnon', $data);
-    }
-
 
     /** AP 상점 설치관리 첨부파일 등록 */
     function promadd(Request $request){

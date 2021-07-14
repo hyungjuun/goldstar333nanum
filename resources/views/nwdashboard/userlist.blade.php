@@ -1,6 +1,6 @@
 @extends('layouts.nwwifiv1')
 
-@section('title', __('나눔 고객정보 관리'))
+@section('title', __('고객정보 관리'))
 
 @section('content')
     <section>
@@ -15,7 +15,7 @@
                             <h3 class="card-title">나눔와이파이 장비(AP)에 wifi 로 접속한 사용자 정보를 관리합니다.</h3>
                             <div class=" float-sm-right"> </div>
                         </div>
-                        
+
                         <div class="card-body">
                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                 <div class="row">

@@ -1,6 +1,6 @@
 @extends('layouts.nwwifiv1')
 
-@section('title', __('나눔 서비스 현황'))
+@section('title', __('서비스 현황'))
 
 @section('content')
     <div class="container-fluid">
@@ -34,8 +34,6 @@
                     </div>
                     <div class="icon">
                         <ion-icon name="storefront-outline"></ion-icon>
-{{--                        <i class="ion ion-bag"></i>--}}
-{{--                        <i class="ion ion-person"></i>--}}
                         <i class="ion ion-wifi"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
@@ -51,7 +49,6 @@
                     </div>
                     <div class="icon">
                         <i class="ion ion-ios-trash"></i>
-{{--                        <i class="ion ion-stats-bars"></i>--}}
                     </div>
                     <a href="/nwpromlist" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -108,7 +105,7 @@
                     </div>
 
                     <div class="card card-primary card-outline">
-                        
+
                         <div class="card-header">
                             <h3 class="card-title">서비스 개요</h3>
                             <div class="card-tools">
